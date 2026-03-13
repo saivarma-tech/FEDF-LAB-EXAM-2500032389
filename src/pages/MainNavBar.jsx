@@ -8,7 +8,7 @@ export default function MainNavBar() {
   return (
     <div>
 
-      <h2>Main Navigation</h2>
+      <h2>Course Registration</h2>
 
       <nav>
         <Link to="/">Home</Link> |{" "}
