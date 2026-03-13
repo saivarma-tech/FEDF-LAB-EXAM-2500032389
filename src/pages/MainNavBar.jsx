@@ -3,6 +3,7 @@ import Home from "../exam/Home";
 import CourseRegistration from "../exam/CourseRegistration";
 import RegisteredCourses from "../exam/RegisteredCourses";
 import APIDemo from "../exam/APIDemo";
+import PageNotFound from "../exam/PageNotFound";
 
 export default function MainNavBar() {
   return (
@@ -22,6 +23,7 @@ export default function MainNavBar() {
         <Route path="/register" element={<CourseRegistration />} />
         <Route path="/courses" element={<RegisteredCourses />} />
         <Route path="/api" element={<APIDemo />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
 
     </div>
