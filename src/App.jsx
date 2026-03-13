@@ -1,5 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import MainNavBar from "./pages/MainNavBar";
+import "./App.css"
 
 function App() {
   return (
