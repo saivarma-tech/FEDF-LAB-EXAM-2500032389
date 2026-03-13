@@ -1,46 +1,49 @@
-import { useEffect, useState } from "react";
+import React, { useEffect,useState } from 'react'
 
-export default function APIDemo() {
+export default function APIDemo() 
+{
+    const [companies,setData] = useState([])
+    const [error,setError] = useState("")
 
-  const [companies, setCompanies] = useState([]);
-
-  useEffect(() => {
-    fetch("https://dummy-json.mock.beeceptor.com/companies")
-      .then(res => res.json())
-      .then(data => setCompanies(data));
-  }, []);
-
+    useEffect(() => {
+        fetch("https://dummy-json.mock.beeceptor.com/companies").then((response) => 
+        response.json()
+    ).then((companies) => 
+        setData(companies)
+    ).catch((err) => {
+        setError(err.message)
+    });
+    }, []);// Empty Dependency Array
   return (
     <div>
+        <h2><u>Fetch API Demo</u></h2>
+        {
+            error ? <b>{error}</b> :
+            companies.length == 0 ?
+            <b>Loading....</b> :
 
-      <h2>API Demo - Companies</h2>
-
-      <table border="1" cellPadding="10">
-
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Industry</th>
-            <th>Employees</th>
-            <th>Country</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {companies.map((c) => (
-            <tr key={c.id}>
-              <td>{c.id}</td>
-              <td>{c.name}</td>
-              <td>{c.industry}</td>
-              <td>{c.employeeCount}</td>
-              <td>{c.country}</td>
+        
+        <table border={1}>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                
             </tr>
-          ))}
-        </tbody>
-
-      </table>
+            {
+                companies.map((companies,index) => (
+                    <tr key={index}>
+                        <td>{companies.id}</td>
+                        <td>{companies.name}</td>
+                        <td>{companies.address}
+                            </td>
+                    </tr>
+                ))
+            }
+        </table>
+}
 
     </div>
-  );
+    
+  )
 }
